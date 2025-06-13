@@ -55,3 +55,18 @@ class Sport(Product):
 
     def __str__(self):
         return super().__str__() + f", type_of_sport={self.type_of_sport}"
+    
+class Stationary(Product):
+    def __init__(self, product_id, name: str, price: float, quantity: int,):
+        super().__init__(product_id, name, price, quantity )
+    
+    def __str__(self):
+        return super.__str__()
+
+class Hardware(Product):
+    def __init__(self,product_id, name: str, price: float, quantity: int, type_of_hardware: str):
+        super().__init__(product_id, name, price, quantity)
+        self.type_hardware_ware = type_of_hardware
+
+    def __str__(self):
+        return super.__str__() + f", type_of_hardware ={self.type_of_hardware}"
