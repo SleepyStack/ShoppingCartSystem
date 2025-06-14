@@ -13,13 +13,15 @@ class Physical_product(Product):
         super().__init__(product_id,name, price, quantity)
     
     def __str__(self):
-        super().__str__()
+        return super().__str__()
 
 class Digital_product(Product):
     def __init__(self, product_id,name: str, price: float, quantity: int):
         super().__init__(product_id,name, price, quantity)
     def __str__(self):
-        super().__str__()
+        return super().__str__()
+
+#Sub classes implementing class Physical_product
 
 class Grocery(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int, expiration_date: str):
@@ -71,15 +73,38 @@ class Sport(Physical_product):
     
 class Stationary(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int,):
-        super().__init__(product_id, name, price, quantity )
+        super().__init__(product_id, name, price, quantity)
     
     def __str__(self):
-        return super.__str__()
+        return super().__str__()
 
 class Hardware(Physical_product):
     def __init__(self,product_id, name: str, price: float, quantity: int, type_of_hardware: str):
         super().__init__(product_id, name, price, quantity)
-        self.type_hardware_ware = type_of_hardware
+        self.type_of_hardware = type_of_hardware
 
     def __str__(self):
-        return super.__str__() + f", type_of_hardware ={self.type_of_hardware}"
+        return super().__str__() + f", type_of_hardware={self.type_of_hardware}"
+    
+#Sub classes implementing class Digital_product
+
+class Software(Digital_product):
+    def __init__(self, product_id, name: str, price: float, quantity: int, license_key: str):
+        super().__init__(product_id, name, price, quantity)
+        self.license_key = license_key
+    def __str__(self):
+        return super().__str__() + f", license_key = {self.license_key}"
+
+class Ebook(Digital_product):
+    def __init__(self, product_id, name: str, price: float, quantity: int, author: str):
+        super().__init__(product_id,name,price,quantity)
+        self.author = author
+    def __str__(self):
+        return super().__str__() + f", author = {self.author}"
+    
+class Service(Digital_product):
+    def __init__(self, product_id, name: str, price: float, quantity: int, duration: str):
+        super().__init__(product_id, name, price, quantity)
+        self.duration = duration
+    def __str__(self):
+        return super().__str__() + f", duration = {self.duration}"
