@@ -35,7 +35,7 @@ class Inventory:
 
         Electronics(19, "Bluetooth Headphones", 59.99, 25, "2 years"),
         Electronics(20, "Smartphone", 399.99, 10, "1 year"),
-        Electronics(21, "LED Monitor 24\"", 139.99, 12, "3 years"),
+        Electronics(21, "LED Monitor 32inch", 139.99, 12, "3 years"),
         Electronics(22, "USB Flash Drive 128GB", 18.99, 100, "1 year"),
         Electronics(23, "Wireless Mouse", 14.99, 60, "2 years"),
         Electronics(24, "Laptop", 799.99, 8, "1 year"),
