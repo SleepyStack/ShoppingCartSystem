@@ -108,3 +108,14 @@ class Service(Digital_product):
         self.duration = duration
     def __str__(self):
         return super().__str__() + f", duration = {self.duration}"
+    
+class MusicProduct(Digital_product):
+    def __init__(self, product_id, name: str, price: float, quantity: int, artist: str, album: str, duration: str, audio_format: str):
+        super().__init__(product_id, name, price, quantity)
+        self.artist = artist
+        self.album = album
+        self.duration = duration
+        self.audio_format = audio_format
+
+    def __str__(self):
+        return super().__str__() + f", artist={self.artist}, album={self.album}, duration={self.duration}, audio_format={self.audio_format}"
