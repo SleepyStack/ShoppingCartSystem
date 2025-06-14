@@ -7,8 +7,21 @@ class Product:
 
     def __str__(self):
         return f"Product id = {self.product_id}, name={self.name}, price={self.price}, quantity={self.quantity}"
+    
+class Physical_product(Product):
+    def __init__(self, product_id,name: str, price: float, quantity: int):
+        super().__init__(product_id,name, price, quantity)
+    
+    def __str__(self):
+        super().__str__()
 
-class Grocery(Product):
+class Digital_product(Product):
+    def __init__(self, product_id,name: str, price: float, quantity: int):
+        super().__init__(product_id,name, price, quantity)
+    def __str__(self):
+        super().__str__()
+
+class Grocery(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int, expiration_date: str):
         super().__init__(product_id, name, price, quantity)
         self.expiration_date = expiration_date
@@ -16,7 +29,7 @@ class Grocery(Product):
     def __str__(self):
         return super().__str__() + f", expiration_date={self.expiration_date}"
     
-class Clothing(Product):
+class Clothing(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int, size: str, color: str):
         super().__init__(product_id, name, price, quantity)
         self.size = size
@@ -25,7 +38,7 @@ class Clothing(Product):
     def __str__(self):
         return super().__str__() +  f", size={self.size}, color={self.color}"
 
-class Electronics(Product):
+class Electronics(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int, warranty_period: str):
         super().__init__(product_id, name, price, quantity)
         self.warranty_period = warranty_period
@@ -33,14 +46,14 @@ class Electronics(Product):
     def __str__(self):
         return super().__str__() + f", warranty_period={self.warranty_period}"
     
-class Furniture(Product):
+class Furniture(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int, material: str):
         super().__init__(product_id, name, price, quantity)
         self.material = material
     def __str__(self):
         return super().__str__() + f", material={self.material}"
     
-class Beauty(Product):
+class Beauty(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int, brand: str):
         super().__init__(product_id, name, price, quantity)
         self.brand = brand
@@ -48,7 +61,7 @@ class Beauty(Product):
     def __str__(self):
         return super().__str__() + f", brand={self.brand}"
     
-class Sport(Product):
+class Sport(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int, type_of_sport: str):
         super().__init__(product_id, name, price, quantity)
         self.type_of_sport = type_of_sport
@@ -56,14 +69,14 @@ class Sport(Product):
     def __str__(self):
         return super().__str__() + f", type_of_sport={self.type_of_sport}"
     
-class Stationary(Product):
+class Stationary(Physical_product):
     def __init__(self, product_id, name: str, price: float, quantity: int,):
         super().__init__(product_id, name, price, quantity )
     
     def __str__(self):
         return super.__str__()
 
-class Hardware(Product):
+class Hardware(Physical_product):
     def __init__(self,product_id, name: str, price: float, quantity: int, type_of_hardware: str):
         super().__init__(product_id, name, price, quantity)
         self.type_hardware_ware = type_of_hardware
