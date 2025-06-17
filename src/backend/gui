@@ -1,0 +1,189 @@
+import tkinter as tk
+from tkinter import ttk, messagebox, simpledialog
+from inventory import Inventory
+from cart import Cart
+
+class ShopGUI:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Shop Inventory & Cart")
+        self.master.geometry("900x600")
+        self.inventory = Inventory.inventory
+        self.cart = Cart()
+
+        self.create_widgets()
+        self.populate_inventory()
+
+    def create_widgets(self):
+        # Inventory Frame
+        inv_frame = ttk.LabelFrame(self.master, text="Product Inventory")
+        inv_frame.pack(fill="both", expand=True, padx=10, pady=10, side="left")
+
+        columns = ("ID", "Name", "Price", "Stock", "Type")
+        self.tree = ttk.Treeview(inv_frame, columns=columns, show="headings", height=25)
+        for col in columns:
+            self.tree.heading(col, text=col)
+            self.tree.column(col, width=110 if col == "Name" else 70)
+        self.tree.pack(fill="both", expand=True, side="left")
+
+        # Scrollbar
+        scrollbar = ttk.Scrollbar(inv_frame, orient="vertical", command=self.tree.yview)
+        self.tree.configure(yscrollcommand=scrollbar.set)
+        scrollbar.pack(side="right", fill="y")
+
+        # Right Panel for Cart and Controls
+        right_frame = ttk.Frame(self.master)
+        right_frame.pack(fill="y", expand=False, padx=10, pady=10, side="left")
+
+        # Cart
+        cart_frame = ttk.LabelFrame(right_frame, text="Your Cart")
+        cart_frame.pack(fill="both", expand=True, pady=(0, 10))
+
+        self.cart_list = tk.Listbox(cart_frame, width=40, height=18, font=("Consolas", 11))
+        self.cart_list.pack(side="left", fill="both", expand=True)
+        cart_scroll = ttk.Scrollbar(cart_frame, orient="vertical", command=self.cart_list.yview)
+        self.cart_list.configure(yscrollcommand=cart_scroll.set)
+        cart_scroll.pack(side="right", fill="y")
+
+        # Cart total
+        self.total_label = ttk.Label(right_frame, text="Total: $0.00", font=("Segoe UI", 13, "bold"))
+        self.total_label.pack(pady=5)
+
+        # Controls
+        controls = ttk.Frame(right_frame)
+        controls.pack(fill="x", expand=False)
+
+        ttk.Button(controls, text="Add to Cart", command=self.add_to_cart).pack(fill="x", pady=(8,2))
+        ttk.Button(controls, text="Remove from Cart", command=self.remove_from_cart).pack(fill="x", pady=2)
+        ttk.Button(controls, text="View Cart", command=self.refresh_cart).pack(fill="x", pady=2)
+        ttk.Button(controls, text="Checkout", command=self.checkout).pack(fill="x", pady=2)
+        ttk.Button(controls, text="Exit", command=self.master.quit).pack(fill="x", pady=(2,8))
+
+        # Live Search/Select
+        search_frame = ttk.LabelFrame(right_frame, text="Quick Product Search")
+        search_frame.pack(fill="x", expand=False)
+        self.search_var = tk.StringVar()
+        self.search_entry = ttk.Entry(search_frame, textvariable=self.search_var)
+        self.search_entry.pack(side="left", fill="x", expand=True, padx=3, pady=5)
+        self.search_entry.bind("<KeyRelease>", self.live_search)
+        self.search_entry.bind("<Return>", self.select_top_result)
+        ttk.Button(search_frame, text="Show All", width=10, command=self.show_all).pack(side="left", padx=3, pady=5)
+
+    def populate_inventory(self, filter_query=None):
+        # Clear inventory table
+        for row in self.tree.get_children():
+            self.tree.delete(row)
+        # Add products (filtered if needed)
+        for p in self.inventory.values():
+            if filter_query:
+                query = filter_query.lower()
+                if query not in str(p.product_id).lower() and query not in p.name.lower():
+                    continue
+            ptype = p.__class__.__name__
+            self.tree.insert("", "end", iid=str(p.product_id), values=(
+                p.product_id, p.name, f"${p.price:.2f}", p.quantity, ptype
+            ))
+        # Optionally select the first row
+        children = self.tree.get_children()
+        if children:
+            self.tree.selection_set(children[0])
+            self.tree.focus(children[0])
+
+    def show_all(self):
+        self.search_var.set("")
+        self.populate_inventory()
+
+    def live_search(self, event=None):
+        query = self.search_var.get().strip()
+        self.populate_inventory(filter_query=query)
+        # Highlight first result if available
+        children = self.tree.get_children()
+        if children:
+            self.tree.selection_set(children[0])
+            self.tree.focus(children[0])
+
+    def select_top_result(self, event=None):
+        children = self.tree.get_children()
+        if children:
+            self.tree.selection_set(children[0])
+            self.tree.focus(children[0])
+            self.add_to_cart()
+
+    def add_to_cart(self):
+        selected = self.tree.selection()
+        if not selected:
+            messagebox.showwarning("Selection", "Please select a product to add.")
+            return
+        product_id = int(selected[0])
+        product = self.inventory[product_id]
+        # Ask for quantity
+        qty = simpledialog.askinteger(
+            "Quantity",
+            f"Enter quantity for {product.name} (Available: {product.quantity}):",
+            minvalue=1, maxvalue=product.quantity
+        )
+        if qty is None:
+            return
+        if qty > product.quantity:
+            messagebox.showerror("Stock", "Not enough stock available.")
+            return
+        self.cart.add_item(product, qty)
+        messagebox.showinfo("Cart", f"Added {qty} x {product.name} to cart.")
+        self.refresh_cart()
+
+        # --- Clear quick search box and reset inventory view ---
+        self.search_var.set("")
+        self.populate_inventory()
+
+    def remove_from_cart(self):
+        selection = self.cart_list.curselection()
+        if not selection:
+            messagebox.showwarning("Selection", "Please select an item in the cart to remove.")
+            return
+        item_text = self.cart_list.get(selection[0])
+        product_name = item_text.split("|")[0].strip()
+        for p in self.inventory.values():
+            if p.name == product_name:
+                break
+        else:
+            return
+        current_qty = self.cart.items.get(p.product_id, 0)
+        qty = simpledialog.askinteger("Remove Quantity", f"Remove how many of {p.name}? (In cart: {current_qty})", minvalue=1, maxvalue=current_qty)
+        if qty is None:
+            return
+        self.cart.remove_item(p, qty)
+        messagebox.showinfo("Cart", f"Removed {qty} of {p.name} from cart.")
+        self.refresh_cart()
+
+    def refresh_cart(self):
+        self.cart_list.delete(0, tk.END)
+        total = 0
+        for product_id, qty in self.cart.items.items():
+            p = self.inventory[product_id]
+            item_total = p.price * qty
+            total += item_total
+            self.cart_list.insert(tk.END, f"{p.name:25} | ${p.price:7.2f} x {qty:3} = ${item_total:8.2f}")
+        self.total_label.config(text=f"Total: ${total:.2f}")
+
+    def checkout(self):
+        if not self.cart.items:
+            messagebox.showinfo("Checkout", "Your cart is empty.")
+            return
+        # Check stock before checking out
+        for product_id, qty in self.cart.items.items():
+            product = self.inventory[product_id]
+            if qty > product.quantity:
+                messagebox.showerror("Stock", f"Not enough stock for {product.name}.")
+                return
+        for product_id, qty in self.cart.items.items():
+            self.inventory[product_id].quantity -= qty
+        total = self.cart.checkout(self.inventory)
+        self.refresh_cart()
+        self.populate_inventory()
+        messagebox.showinfo("Checkout", f"Order placed!\nTotal paid: ${total:.2f}")
+        self.cart = Cart()  # Reset cart
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = ShopGUI(root)
+    root.mainloop()
