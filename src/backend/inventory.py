@@ -1,30 +1,24 @@
 import json
+from typing import Dict
 from product import Product
 
 class Inventory:
     def __init__(self, filename="products.json"):
         self.filename = filename
-        self.inventory = self.load_inventory()
+        self.products: Dict[int, Product] = {}
+        self.load()
 
-    def load_inventory(self):
+    def load(self):
         try:
             with open(self.filename, "r") as f:
                 data = json.load(f)
-            inv = {}
-            for item in data:
-                product = Product.from_dict(item)
-                inv[product.product_id] = product
-            return inv
+            self.products = {d["product_id"]: Product.from_dict(d) for d in data}
         except FileNotFoundError:
-            print("[INFO] Inventory file not found. Starting with empty inventory.")
-            return {}
-        except Exception as e:
-            print(f"[ERROR] Failed to load inventory: {e}")
-            return {}
+            self.products = {}
 
-    def save_inventory(self):
-        try:
-            with open(self.filename, "w") as f:
-                json.dump([p.to_dict() for p in self.inventory.values()], f, indent=2)
-        except Exception as e:
-            print(f"[ERROR] Failed to save inventory: {e}")
+    def save(self):
+        with open(self.filename, "w") as f:
+            json.dump([p.to_dict() for p in self.products.values()], f, indent=2)
+
+    def get(self, product_id: int) -> Product:
+        return self.products.get(product_id)

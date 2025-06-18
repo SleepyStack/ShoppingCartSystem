@@ -1,38 +1,45 @@
+from inventory import Inventory
 from cart import ShoppingCart
 
 def main_menu():
-    cart = ShoppingCart()
+    inventory = Inventory()
+    cart = ShoppingCart(inventory)
     while True:
-        print("""
-========= Shopping Cart Menu =========
-1. View Products
-2. Add Item to Cart
-3. View Cart
-4. Update Cart Item Quantity
-5. Remove Item from Cart
-6. Checkout (dummy)
-7. Exit
-""")
-        choice = input("Enter your choice: ")
+        print("\n1. View Products\n2. Add to Cart\n3. View Cart\n4. Update Quantity\n5. Remove from Cart\n6. Checkout (dummy)\n7. Exit")
+        choice = input("Choice: ")
         if choice == "1":
-            cart.display_products()
+            for p in inventory.products.values():
+                print(p)
         elif choice == "2":
-            pid = input("Enter Product ID to add: ")
-            qty = int(input("Enter quantity: "))
-            cart.add_item(pid, qty)
+            pid = int(input("Product ID: "))
+            qty = int(input("Quantity: "))
+            try:
+                cart.add(pid, qty)
+                print("Added to cart.")
+            except Exception as e:
+                print(e)
         elif choice == "3":
-            cart.display_cart()
+            for item in cart.items.values():
+                print(f"{item.product.name}: {item.quantity} x ${item.product.price:.2f} = ${item.subtotal():.2f}")
+            print(f"Total: ${cart.total():.2f}")
         elif choice == "4":
-            pid = input("Enter Product ID to update: ")
-            qty = int(input("Enter new quantity: "))
-            cart.update_quantity(pid, qty)
+            pid = int(input("Product ID: "))
+            qty = int(input("New quantity: "))
+            try:
+                cart.update(pid, qty)
+                print("Updated.")
+            except Exception as e:
+                print(e)
         elif choice == "5":
-            pid = input("Enter Product ID to remove: ")
-            cart.remove_item(pid)
+            pid = int(input("Product ID: "))
+            cart.remove(pid)
+            print("Removed.")
         elif choice == "6":
-            print("Checkout complete. (Not implemented)")
+            print("Checkout not implemented.")
         elif choice == "7":
-            print("Exiting. Goodbye!")
             break
         else:
-            print("Invalid choice. Try again.")
+            print("Invalid.")
+
+if __name__ == "__main__":
+    main_menu()
