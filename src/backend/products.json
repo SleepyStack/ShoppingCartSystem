@@ -1,0 +1,27 @@
+[
+  {
+    "type": "Grocery",
+    "product_id": 1,
+    "name": "Whole Milk",
+    "price": 2.99,
+    "quantity": 50,
+    "expiration_date": "2025-08-01"
+  },
+  {
+    "type": "Clothing",
+    "product_id": 11,
+    "name": "Men's T-Shirt",
+    "price": 12.99,
+    "quantity": 60,
+    "size": "L",
+    "color": "Black"
+  },
+  {
+    "type": "Software",
+    "product_id": 67,
+    "name": "Photo Editor Pro",
+    "price": 39.99,
+    "quantity": 100,
+    "license_key": "PHOT-EDT-2025-001"
+  }
+]
