@@ -74,8 +74,9 @@ ShoppingCartSystem/
 ## 🙌 Credits
 
 Proudly created by our college group:  
-- SleepyStack  
-- [Add team members here!]
+- SleepyStack ( Chirag )
+- 1aryanchaudhary1 ( Aryan )
+- juhiupadhayay ( Juhi )
 
 Special thanks to our instructors, classmates, and anyone who helped us debug at 2am!
 
