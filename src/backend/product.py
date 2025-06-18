@@ -35,7 +35,6 @@ class Product:
     def increase_quantity(self, amount: int):
         self.quantity += amount
 
-# Example subclass for a Grocery item
 @dataclass
 class Grocery(Product):
     expiration_date: str = ""
@@ -96,9 +95,125 @@ class Clothing(Product):
         d["color"] = self.color
         return d
 
+@dataclass
+class Electronics(Product):
+    brand: str = ""
+
+    @classmethod
+    def _from_dict(cls, data):
+        return cls(
+            product_id=data["product_id"],
+            name=data["name"],
+            price=data["price"],
+            quantity=data["quantity"],
+            brand=data.get("brand", "")
+        )
+
+    def to_dict(self) -> dict:
+        d = super().to_dict()
+        d["brand"] = self.brand
+        return d
+
+@dataclass
+class Book(Product):
+    author: str = ""
+    isbn: str = ""
+
+    @classmethod
+    def _from_dict(cls, data):
+        return cls(
+            product_id=data["product_id"],
+            name=data["name"],
+            price=data["price"],
+            quantity=data["quantity"],
+            author=data.get("author", ""),
+            isbn=data.get("isbn", "")
+        )
+
+    def to_dict(self) -> dict:
+        d = super().to_dict()
+        d["author"] = self.author
+        d["isbn"] = self.isbn
+        return d
+
+@dataclass
+class HomeAppliance(Product):
+    wattage: str = ""
+
+    @classmethod
+    def _from_dict(cls, data):
+        return cls(
+            product_id=data["product_id"],
+            name=data["name"],
+            price=data["price"],
+            quantity=data["quantity"],
+            wattage=data.get("wattage", "")
+        )
+
+    def to_dict(self) -> dict:
+        d = super().to_dict()
+        d["wattage"] = self.wattage
+        return d
+
+@dataclass
+class BrandProduct(Product):
+    brand: str = ""
+
+    @classmethod
+    def _from_dict(cls, data):
+        return cls(
+            product_id=data["product_id"],
+            name=data["name"],
+            price=data["price"],
+            quantity=data["quantity"],
+            brand=data.get("brand", "")
+        )
+
+    def to_dict(self) -> dict:
+        d = super().to_dict()
+        d["brand"] = self.brand
+        return d
+
+@dataclass
+class MaterialProduct(Product):
+    material: str = ""
+
+    @classmethod
+    def _from_dict(cls, data):
+        return cls(
+            product_id=data["product_id"],
+            name=data["name"],
+            price=data["price"],
+            quantity=data["quantity"],
+            material=data.get("material", "")
+        )
+
+    def to_dict(self) -> dict:
+        d = super().to_dict()
+        d["material"] = self.material
+        return d
+
+# Map product type names in JSON to classes
 PRODUCT_TYPES: Dict[str, Type[Product]] = {
     "Product": Product,
     "Grocery": Grocery,
     "Clothing": Clothing,
     "Software": Software,
+    "Electronics": Electronics,
+    "Book": Book,
+    "Home Appliance": HomeAppliance,
+    "Beauty": BrandProduct,
+    "Sports": BrandProduct,
+    "Toys": BrandProduct,
+    "Office Supplies": BrandProduct,
+    "Automotive": BrandProduct,
+    "Pet Supplies": BrandProduct,
+    "Gardening": BrandProduct,
+    "Musical Instruments": BrandProduct,
+    "Baby Products": BrandProduct,
+    "Health": BrandProduct,
+    "Shoes": BrandProduct,
+    "Tools": BrandProduct,
+    "Jewelry": MaterialProduct,
+    "Furniture": MaterialProduct,
 }
