@@ -1,10 +1,12 @@
 import json
+import os
 from typing import Dict
 from product import Product
 
 class Inventory:
     def __init__(self, filename="products.json"):
-        self.filename = filename
+        # Always load products.json from the same directory as this file
+        self.filename = os.path.join(os.path.dirname(__file__), filename)
         self.products: Dict[int, Product] = {}
         self.load()
 
