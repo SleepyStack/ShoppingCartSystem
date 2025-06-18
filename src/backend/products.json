@@ -1,27 +1,121 @@
 [
-  {
-    "type": "Grocery",
-    "product_id": 1,
-    "name": "Whole Milk",
-    "price": 2.99,
-    "quantity": 50,
-    "expiration_date": "2025-08-01"
-  },
-  {
-    "type": "Clothing",
-    "product_id": 11,
-    "name": "Men's T-Shirt",
-    "price": 12.99,
-    "quantity": 60,
-    "size": "L",
-    "color": "Black"
-  },
-  {
-    "type": "Software",
-    "product_id": 67,
-    "name": "Photo Editor Pro",
-    "price": 39.99,
-    "quantity": 100,
-    "license_key": "PHOT-EDT-2025-001"
-  }
+  {"type": "Grocery", "product_id": 1, "name": "Whole Milk", "price": 2.99, "quantity": 50, "expiration_date": "2025-08-01"},
+  {"type": "Grocery", "product_id": 2, "name": "Organic Eggs (Dozen)", "price": 4.49, "quantity": 25, "expiration_date": "2025-07-20"},
+  {"type": "Grocery", "product_id": 3, "name": "Sourdough Bread", "price": 3.99, "quantity": 40, "expiration_date": "2025-06-30"},
+  {"type": "Grocery", "product_id": 4, "name": "Bananas", "price": 1.20, "quantity": 100, "expiration_date": "2025-06-25"},
+  {"type": "Grocery", "product_id": 5, "name": "Peanut Butter", "price": 5.99, "quantity": 30, "expiration_date": "2026-01-10"},
+
+  {"type": "Clothing", "product_id": 11, "name": "Men's T-Shirt", "price": 12.99, "quantity": 60, "size": "L", "color": "Black"},
+  {"type": "Clothing", "product_id": 12, "name": "Women's Jeans", "price": 34.99, "quantity": 35, "size": "M", "color": "Blue"},
+  {"type": "Clothing", "product_id": 13, "name": "Kids' Hoodie", "price": 18.99, "quantity": 25, "size": "S", "color": "Red"},
+  {"type": "Clothing", "product_id": 14, "name": "Men's Formal Shirt", "price": 22.99, "quantity": 45, "size": "M", "color": "White"},
+  {"type": "Clothing", "product_id": 15, "name": "Women's Jacket", "price": 49.99, "quantity": 20, "size": "L", "color": "Green"},
+
+  {"type": "Software", "product_id": 21, "name": "Photo Editor Pro", "price": 39.99, "quantity": 100, "license_key": "PHOT-EDT-2025-001"},
+  {"type": "Software", "product_id": 22, "name": "Antivirus Plus", "price": 24.99, "quantity": 150, "license_key": "ANTIV-PLUS-2025-002"},
+  {"type": "Software", "product_id": 23, "name": "Office Suite", "price": 79.99, "quantity": 70, "license_key": "OFFICE-SUITE-2025-003"},
+  {"type": "Software", "product_id": 24, "name": "Video Converter", "price": 19.99, "quantity": 95, "license_key": "VID-CONV-2025-004"},
+  {"type": "Software", "product_id": 25, "name": "Music Studio", "price": 59.99, "quantity": 80, "license_key": "MUS-STU-2025-005"},
+
+  {"type": "Electronics", "product_id": 31, "name": "Wireless Headphones", "price": 59.99, "quantity": 30, "brand": "SoundMax"},
+  {"type": "Electronics", "product_id": 32, "name": "Smartphone", "price": 499.99, "quantity": 15, "brand": "PhoneTech"},
+  {"type": "Electronics", "product_id": 33, "name": "Bluetooth Speaker", "price": 29.99, "quantity": 50, "brand": "BeatsAudio"},
+  {"type": "Electronics", "product_id": 34, "name": "Smartwatch", "price": 99.99, "quantity": 22, "brand": "TimeWare"},
+  {"type": "Electronics", "product_id": 35, "name": "4K TV", "price": 799.99, "quantity": 12, "brand": "VisionPlus"},
+
+  {"type": "Book", "product_id": 41, "name": "Learn Python Programming", "price": 19.99, "quantity": 80, "author": "John Doe", "isbn": "978-1234567890"},
+  {"type": "Book", "product_id": 42, "name": "Data Structures and Algorithms", "price": 24.99, "quantity": 65, "author": "Jane Smith", "isbn": "978-0987654321"},
+  {"type": "Book", "product_id": 43, "name": "Modern Web Development", "price": 29.99, "quantity": 70, "author": "Alex Johnson", "isbn": "978-1122334455"},
+  {"type": "Book", "product_id": 44, "name": "History of Art", "price": 21.99, "quantity": 40, "author": "Emily Clark", "isbn": "978-2233445566"},
+  {"type": "Book", "product_id": 45, "name": "Science Experiments", "price": 14.99, "quantity": 60, "author": "Tim Lee", "isbn": "978-3344556677"},
+
+  {"type": "Home Appliance", "product_id": 51, "name": "Electric Kettle", "price": 29.99, "quantity": 40, "wattage": "1500W"},
+  {"type": "Home Appliance", "product_id": 52, "name": "Air Purifier", "price": 89.99, "quantity": 18, "wattage": "50W"},
+  {"type": "Home Appliance", "product_id": 53, "name": "Toaster", "price": 24.99, "quantity": 32, "wattage": "800W"},
+  {"type": "Home Appliance", "product_id": 54, "name": "Vacuum Cleaner", "price": 129.99, "quantity": 15, "wattage": "1200W"},
+  {"type": "Home Appliance", "product_id": 55, "name": "Microwave Oven", "price": 159.99, "quantity": 10, "wattage": "1000W"},
+
+  {"type": "Beauty", "product_id": 61, "name": "Moisturizing Cream", "price": 15.99, "quantity": 40, "brand": "GlowSkin"},
+  {"type": "Beauty", "product_id": 62, "name": "Shampoo", "price": 9.99, "quantity": 55, "brand": "HairCare"},
+  {"type": "Beauty", "product_id": 63, "name": "Perfume", "price": 49.99, "quantity": 20, "brand": "Essence"},
+  {"type": "Beauty", "product_id": 64, "name": "Lipstick", "price": 11.99, "quantity": 30, "brand": "ColorPop"},
+  {"type": "Beauty", "product_id": 65, "name": "Face Wash", "price": 7.99, "quantity": 50, "brand": "FreshLook"},
+
+  {"type": "Sports", "product_id": 71, "name": "Football", "price": 27.99, "quantity": 40, "brand": "SportStar"},
+  {"type": "Sports", "product_id": 72, "name": "Yoga Mat", "price": 19.99, "quantity": 60, "brand": "ZenFlex"},
+  {"type": "Sports", "product_id": 73, "name": "Tennis Racket", "price": 89.99, "quantity": 15, "brand": "AcePro"},
+  {"type": "Sports", "product_id": 74, "name": "Basketball", "price": 25.99, "quantity": 30, "brand": "Hoopster"},
+  {"type": "Sports", "product_id": 75, "name": "Swim Goggles", "price": 14.99, "quantity": 25, "brand": "AquaSight"},
+
+  {"type": "Toys", "product_id": 81, "name": "Building Blocks", "price": 29.99, "quantity": 40, "brand": "BlockyFun"},
+  {"type": "Toys", "product_id": 82, "name": "Remote Control Car", "price": 39.99, "quantity": 35, "brand": "Speedster"},
+  {"type": "Toys", "product_id": 83, "name": "Doll House", "price": 49.99, "quantity": 12, "brand": "DreamHome"},
+  {"type": "Toys", "product_id": 84, "name": "Puzzle Game", "price": 14.99, "quantity": 60, "brand": "BrainTease"},
+  {"type": "Toys", "product_id": 85, "name": "Action Figure", "price": 19.99, "quantity": 50, "brand": "HeroPlay"},
+
+  {"type": "Office Supplies", "product_id": 91, "name": "Notebook", "price": 3.99, "quantity": 100, "brand": "PaperMate"},
+  {"type": "Office Supplies", "product_id": 92, "name": "Ballpoint Pens", "price": 5.99, "quantity": 90, "brand": "WriteOn"},
+  {"type": "Office Supplies", "product_id": 93, "name": "Stapler", "price": 7.99, "quantity": 30, "brand": "ClipIt"},
+  {"type": "Office Supplies", "product_id": 94, "name": "Desk Organizer", "price": 12.99, "quantity": 20, "brand": "NeatDesk"},
+  {"type": "Office Supplies", "product_id": 95, "name": "Printer Paper", "price": 9.49, "quantity": 60, "brand": "PrintPro"},
+
+  {"type": "Automotive", "product_id": 101, "name": "Car Floor Mats", "price": 29.99, "quantity": 25, "brand": "AutoGuard"},
+  {"type": "Automotive", "product_id": 102, "name": "Windshield Wipers", "price": 15.99, "quantity": 40, "brand": "ClearView"},
+  {"type": "Automotive", "product_id": 103, "name": "Engine Oil", "price": 24.99, "quantity": 35, "brand": "OilMaster"},
+  {"type": "Automotive", "product_id": 104, "name": "Car Vacuum", "price": 49.99, "quantity": 12, "brand": "CleanCar"},
+  {"type": "Automotive", "product_id": 105, "name": "Tire Inflator", "price": 34.99, "quantity": 18, "brand": "AirQuick"},
+
+  {"type": "Pet Supplies", "product_id": 111, "name": "Dog Food", "price": 22.99, "quantity": 40, "brand": "PetFeast"},
+  {"type": "Pet Supplies", "product_id": 112, "name": "Cat Litter", "price": 13.49, "quantity": 32, "brand": "KittyClean"},
+  {"type": "Pet Supplies", "product_id": 113, "name": "Bird Cage", "price": 39.99, "quantity": 10, "brand": "FeatherHome"},
+  {"type": "Pet Supplies", "product_id": 114, "name": "Dog Leash", "price": 8.99, "quantity": 60, "brand": "WalkPet"},
+  {"type": "Pet Supplies", "product_id": 115, "name": "Fish Tank", "price": 59.99, "quantity": 8, "brand": "AquaWorld"},
+
+  {"type": "Jewelry", "product_id": 121, "name": "Gold Necklace", "price": 199.99, "quantity": 5, "material": "Gold"},
+  {"type": "Jewelry", "product_id": 122, "name": "Silver Ring", "price": 59.99, "quantity": 15, "material": "Silver"},
+  {"type": "Jewelry", "product_id": 123, "name": "Diamond Earrings", "price": 299.99, "quantity": 3, "material": "Diamond"},
+  {"type": "Jewelry", "product_id": 124, "name": "Pearl Bracelet", "price": 79.99, "quantity": 10, "material": "Pearl"},
+  {"type": "Jewelry", "product_id": 125, "name": "Platinum Watch", "price": 499.99, "quantity": 2, "material": "Platinum"},
+
+  {"type": "Furniture", "product_id": 131, "name": "Sofa", "price": 599.99, "quantity": 4, "material": "Leather"},
+  {"type": "Furniture", "product_id": 132, "name": "Dining Table", "price": 349.99, "quantity": 6, "material": "Wood"},
+  {"type": "Furniture", "product_id": 133, "name": "Office Chair", "price": 129.99, "quantity": 10, "material": "Mesh"},
+  {"type": "Furniture", "product_id": 134, "name": "Bed Frame", "price": 249.99, "quantity": 7, "material": "Metal"},
+  {"type": "Furniture", "product_id": 135, "name": "Bookshelf", "price": 79.99, "quantity": 20, "material": "Wood"},
+
+  {"type": "Gardening", "product_id": 141, "name": "Garden Trowel", "price": 9.99, "quantity": 35, "brand": "PlantEase"},
+  {"type": "Gardening", "product_id": 142, "name": "Watering Can", "price": 14.99, "quantity": 18, "brand": "AquaSpray"},
+  {"type": "Gardening", "product_id": 143, "name": "Outdoor Plant Pot", "price": 24.99, "quantity": 22, "brand": "PotteryPlus"},
+  {"type": "Gardening", "product_id": 144, "name": "Pruning Shears", "price": 19.99, "quantity": 15, "brand": "CutGreen"},
+  {"type": "Gardening", "product_id": 145, "name": "Garden Hose", "price": 29.99, "quantity": 10, "brand": "FlexiFlow"},
+
+  {"type": "Musical Instruments", "product_id": 151, "name": "Acoustic Guitar", "price": 149.99, "quantity": 6, "brand": "StrumMaster"},
+  {"type": "Musical Instruments", "product_id": 152, "name": "Keyboard", "price": 119.99, "quantity": 8, "brand": "SoundKey"},
+  {"type": "Musical Instruments", "product_id": 153, "name": "Drum Set", "price": 399.99, "quantity": 3, "brand": "BeatMaker"},
+  {"type": "Musical Instruments", "product_id": 154, "name": "Violin", "price": 179.99, "quantity": 5, "brand": "StringArt"},
+  {"type": "Musical Instruments", "product_id": 155, "name": "Flute", "price": 39.99, "quantity": 12, "brand": "WindTune"},
+
+  {"type": "Baby Products", "product_id": 161, "name": "Baby Stroller", "price": 149.99, "quantity": 7, "brand": "TinyTravels"},
+  {"type": "Baby Products", "product_id": 162, "name": "Diaper Pack", "price": 24.99, "quantity": 30, "brand": "DryBaby"},
+  {"type": "Baby Products", "product_id": 163, "name": "Baby Bottle", "price": 7.99, "quantity": 50, "brand": "FeedEase"},
+  {"type": "Baby Products", "product_id": 164, "name": "Crib", "price": 199.99, "quantity": 3, "brand": "SleepyTime"},
+  {"type": "Baby Products", "product_id": 165, "name": "Pacifier", "price": 3.99, "quantity": 60, "brand": "CalmBaby"},
+
+  {"type": "Health", "product_id": 171, "name": "Vitamin C Tablets", "price": 14.99, "quantity": 45, "brand": "NutriPlus"},
+  {"type": "Health", "product_id": 172, "name": "First Aid Kit", "price": 24.99, "quantity": 20, "brand": "SafetyCare"},
+  {"type": "Health", "product_id": 173, "name": "Digital Thermometer", "price": 9.99, "quantity": 35, "brand": "MediCheck"},
+  {"type": "Health", "product_id": 174, "name": "Blood Pressure Monitor", "price": 39.99, "quantity": 12, "brand": "HealthTrack"},
+  {"type": "Health", "product_id": 175, "name": "Face Mask Pack", "price": 6.99, "quantity": 100, "brand": "SafeAir"},
+
+  {"type": "Shoes", "product_id": 181, "name": "Running Shoes", "price": 59.99, "quantity": 40, "brand": "FastStep"},
+  {"type": "Shoes", "product_id": 182, "name": "Leather Boots", "price": 89.99, "quantity": 18, "brand": "UrbanWalk"},
+  {"type": "Shoes", "product_id": 183, "name": "Sandals", "price": 19.99, "quantity": 30, "brand": "EasyWear"},
+  {"type": "Shoes", "product_id": 184, "name": "Kids' Sneakers", "price": 29.99, "quantity": 25, "brand": "TinyFeet"},
+  {"type": "Shoes", "product_id": 185, "name": "Formal Shoes", "price": 74.99, "quantity": 12, "brand": "Classique"},
+
+  {"type": "Tools", "product_id": 191, "name": "Cordless Drill", "price": 49.99, "quantity": 15, "brand": "ToolPro"},
+  {"type": "Tools", "product_id": 192, "name": "Hammer", "price": 12.99, "quantity": 40, "brand": "BuildRight"},
+  {"type": "Tools", "product_id": 193, "name": "Screwdriver Set", "price": 14.99, "quantity": 30, "brand": "FixIt"},
+  {"type": "Tools", "product_id": 194, "name": "Measuring Tape", "price": 7.99, "quantity": 50, "brand": "MeasureUp"},
+  {"type": "Tools", "product_id": 195, "name": "Adjustable Wrench", "price": 15.99, "quantity": 25, "brand": "GripMax"}
 ]
