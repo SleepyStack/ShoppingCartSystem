@@ -5,7 +5,7 @@ def main_menu():
     inventory = Inventory()
     cart = ShoppingCart(inventory)
     while True:
-        print("\n1. View Products\n2. Add to Cart\n3. View Cart\n4. Update Quantity\n5. Remove from Cart\n6. Checkout (dummy)\n7. Exit")
+        print("\n1. View Products\n2. Add to Cart\n3. View Cart\n4. Update Quantity\n5. Remove from Cart\n6. Checkout\n7. Exit")
         choice = input("Choice: ")
         if choice == "1":
             # Print table header
@@ -52,7 +52,11 @@ def main_menu():
             cart.remove(pid)
             print("Removed.")
         elif choice == "6":
-            print("Checkout not implemented.")
+            try:
+                total = cart.checkout()
+                print(f"Checkout complete! Total paid: ${total:.2f}")
+            except Exception as e:
+                print(e)
         elif choice == "7":
             break
         else:

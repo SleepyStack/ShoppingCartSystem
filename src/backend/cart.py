@@ -66,3 +66,18 @@ class ShoppingCart:
                     self.items[product.product_id] = CartItem(product, d["quantity"])
         except FileNotFoundError:
             self.items = {}
+
+    def checkout(self) -> float:
+        """
+        Finalizes the cart, returns the total, empties the cart and saves.
+        Inventory is already updated as products are added/removed, so no extra inventory logic here.
+        """
+        total_amount = self.total()
+        if not self.items:
+            raise ValueError("Cart is empty.")
+        # Optionally, you could generate a receipt or transaction record here.
+        self.items = {}
+        self.save()  # Save empty cart
+        # Inventory is already updated, but save just in case
+        self.inventory.save()
+        return total_amount
