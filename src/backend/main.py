@@ -2,10 +2,8 @@ from inventory import Inventory
 from cart import Cart
 
 def find_product_by_id_or_name(inventory, query):
-    # Try by product_id
     if isinstance(query, int) and query in inventory:
         return inventory[query]
-    # Try by name (case-insensitive)
     for product in inventory.values():
         if product.name.lower() == str(query).lower():
             return product
@@ -26,11 +24,18 @@ def main():
                 pass
             product = find_product_by_id_or_name(inventory, query)
             if product:
-                quantity = int(input(f"Enter quantity for {product.name}: "))
+                try:
+                    quantity = int(input(f"Enter quantity for {product.name}: "))
+                except ValueError:
+                    print("Invalid quantity! Please enter a number.")
+                    continue
                 if quantity > product.quantity:
                     print("Not enough stock!")
+                elif quantity <= 0:
+                    print("Please enter a positive quantity.")
                 else:
                     cart.add_item(product, quantity)
+                    product.quantity -= quantity  # Decrement stock here
                     print(f"Added {quantity} of {product.name} to cart.")
             else:
                 print("Product not found.")
@@ -38,6 +43,7 @@ def main():
             cart.view_cart(inventory)
         elif action == 'checkout':
             cart.checkout(inventory)
+            cart.items.clear()  # Optional: Clear cart after checkout
             break
         elif action == 'exit':
             break

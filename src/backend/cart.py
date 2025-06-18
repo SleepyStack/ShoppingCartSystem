@@ -13,12 +13,17 @@ class Cart:
             self.items[product.product_id] -= quantity
             if self.items[product.product_id] <= 0:
                 del self.items[product.product_id]
+        else:
+            print(f"{product.name} not in cart.")
 
     def view_cart(self, inventory):
         print("\nYour Cart:")
         total = 0
         for product_id, quantity in self.items.items():
-            product = inventory[product_id]
+            product = inventory.get(product_id)
+            if not product:
+                print(f"Product with ID {product_id} not found in inventory!")
+                continue
             item_total = product.price * quantity
             total += item_total
             print(f"{product.name:25} | ${product.price:.2f} × {quantity} = ${item_total:.2f}")
