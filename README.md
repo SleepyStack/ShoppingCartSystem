@@ -73,7 +73,7 @@ ShoppingCartSystem/
 
 ## 🙌 Credits
 
-Proudly created by our college group:  
+Proudly created by our group:  
 - SleepyStack ( Chirag )
 - 1aryanchaudhary1 ( Aryan )
 - juhiupadhayay ( Juhi )
